@@ -1,0 +1,8 @@
+*.o
+*.out
+*.a
+*.swp
+.DS_Store
+.gitignore
+.vscode/
+debugging
