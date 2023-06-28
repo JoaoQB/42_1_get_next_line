@@ -1,0 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    pseudocode.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/27 13:58:25 by jqueijo-          #+#    #+#              #
+#    Updated: 2023/06/27 14:01:42 by jqueijo-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+A function that returns a line from a file, until the end of the file is reached.
+
+Need to define buffer size. Why?
+
+Read buffer size. return line until /n.
+Start reading from the next line.
+Repeat.
