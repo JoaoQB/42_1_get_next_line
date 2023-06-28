@@ -1,4 +1,9 @@
 https://raw.githubusercontent.com/rajh-phuyal/42get_next_line/master/42_get_next_line.drawio.png
 logic flow chart.
 
+https://42-cursus.gitbook.io/guide/rank-01/get_next_line
+
+https://www.youtube.com/watch?v=OngGUoENgWo&t=1s
+what is static variable?
+
 https://en.wikipedia.org/wiki/Static_variable
