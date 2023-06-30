@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:54 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/06/27 13:57:23 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:50:45 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdio.h> // Printf
 # include <unistd.h> // System calls, write
 # include <limits.h> // Limits, for testing
+# include <fcntl.h> // Open function
 
+char	*get_next_line(int fd);
 
 #endif
