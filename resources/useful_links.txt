@@ -3,7 +3,10 @@ logic flow chart.
 
 https://42-cursus.gitbook.io/guide/rank-01/get_next_line
 
+https://www.youtube.com/watch?v=-Mt2FdJjVno&t=2s
+understanding get_next_line
+
 https://www.youtube.com/watch?v=OngGUoENgWo&t=1s
 what is static variable?
 
-https://en.wikipedia.org/wiki/Static_variable
+https://www.geeksforgeeks.org/static-variables-in-c/
