@@ -6,6 +6,8 @@ https://42-cursus.gitbook.io/guide/rank-01/get_next_line
 https://www.youtube.com/watch?v=-Mt2FdJjVno&t=2s
 understanding get_next_line
 
+https://www.geeksforgeeks.org/input-output-system-calls-c-create-open-close-read-write/
+
 https://www.youtube.com/watch?v=OngGUoENgWo&t=1s
 what is static variable?
 
