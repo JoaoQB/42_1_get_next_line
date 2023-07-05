@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/05 18:07:04 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/05 21:46:59 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,10 @@ int	main(void)
 
 	fd = open("file2.txt", O_RDONLY);
 	char	*buffer;
+	char	*s2;
 
 	buffer = get_next_line(fd);
-	printf("2 I have read: \n%s$\n", buffer);
-	buffer = get_next_line(fd);
-	printf("2 I have read: \n%s$\n", buffer);
-	buffer = get_next_line(fd);
-	printf("2 I have read: \n%s$\n", buffer);
+	s2 = get_next_line(fd);
+	printf("I have read: \n%s$\n", buffer);
+	printf("I have read: \n%s$\n", s2);
 }
