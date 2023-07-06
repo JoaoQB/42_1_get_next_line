@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/05 21:46:59 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 11:56:08 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	free(buffer);
 	buffer = read_line(fd, buffer);
 	line = create_line(buffer);
 	return (line);
@@ -69,7 +70,7 @@ int	main(void)
 {
 	int	fd;
 
-	fd = open("file2.txt", O_RDONLY);
+	fd = open("file.txt", O_RDONLY);
 	char	*buffer;
 	char	*s2;
 
