@@ -6,11 +6,30 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/06 11:56:08 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:59:56 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*manage_buffer(char *buffer)
+{
+	char	*line;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (*(buffer + i) && *(buffer + i) != '\n')
+		i++;
+	printf("index is in: position %d, char '%c', in %s\n", i, buffer[i], buffer);
+	line = ft_calloc((ft_strlen(buffer) - i) + 1, 1);
+	while (*(buffer + i) && *(buffer + i) != '\0')
+		*(line + j++) = *(buffer + i++);
+	printf("buffer is: %s\n", buffer);
+	printf("line is: %s\n", line);
+	return (line);
+}
 
 char	*read_line(int fd, char *buffer)
 {
@@ -63,6 +82,8 @@ char	*get_next_line(int fd)
 	free(buffer);
 	buffer = read_line(fd, buffer);
 	line = create_line(buffer);
+	printf("buffer: \n%s$\n", buffer);
+	manage_buffer(buffer);
 	return (line);
 }
 
@@ -70,7 +91,7 @@ int	main(void)
 {
 	int	fd;
 
-	fd = open("file.txt", O_RDONLY);
+	fd = open("file2.txt", O_RDONLY);
 	char	*buffer;
 	char	*s2;
 
