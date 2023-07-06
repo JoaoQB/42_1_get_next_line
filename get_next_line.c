@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/06 13:59:56 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:08:12 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ char	*get_next_line(int fd)
 	free(buffer);
 	buffer = read_line(fd, buffer);
 	line = create_line(buffer);
-	printf("buffer: \n%s$\n", buffer);
-	manage_buffer(buffer);
+	buffer = manage_buffer(buffer);
 	return (line);
 }
 
@@ -91,12 +90,15 @@ int	main(void)
 {
 	int	fd;
 
-	fd = open("file2.txt", O_RDONLY);
+	fd = open("file.txt", O_RDONLY);
 	char	*buffer;
 	char	*s2;
+	char	*s3;
 
 	buffer = get_next_line(fd);
 	s2 = get_next_line(fd);
+	s3 = get_next_line(fd);
 	printf("I have read: \n%s$\n", buffer);
 	printf("I have read: \n%s$\n", s2);
+	printf("I have read: \n%s$\n", s3);
 }
