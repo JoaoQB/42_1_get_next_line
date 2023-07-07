@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/07 13:24:33 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:28:09 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int	fd;
 
@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 	char	*buffer;
 
 	buffer = get_next_line(fd);
-	printf("I have read: %s", buffer);
+	printf("I have read: %s", buffer);/*
 	char	*s2;
 	char	*s3;
 	char	*s4;
@@ -127,5 +127,5 @@ char	*get_next_line(int fd)
 	printf("I have read: %s", s3);
 	printf("I have read: %s", s4);
 	buffer = get_next_line(fd);
-	printf("I have read: %s", buffer);
-}*/
+	printf("I have read: %s", buffer);*/
+}
