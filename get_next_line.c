@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:34:52 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:40:57 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = read_line(fd, buffer);
 	line = create_line(buffer);
+	printf("Buffer is:\n %s\n", buffer);
 	buffer = manage_buffer(buffer);
+	printf("Managed buffer is:\n %s\n", buffer);
 	return (line);
 }
 
