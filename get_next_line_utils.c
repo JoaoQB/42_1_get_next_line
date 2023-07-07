@@ -6,11 +6,11 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:58 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:35:35 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:23:48 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "get_next_line.h"
+#include "get_next_line.h"
 
 char	*ft_strchr(const char *s, int c)
 {

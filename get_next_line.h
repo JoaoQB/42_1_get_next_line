@@ -6,26 +6,25 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:54 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:38:49 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:24:57 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdlib.h> // Memory allocation
-# include <stdarg.h> // va_lists
-# include <string.h> // String manipulation
-# include <stddef.h> // Types and macros like NULL and size_t
-# include <stdio.h> // Printf
-# include <unistd.h> // System calls, write
-# include <limits.h> // Limits, for testing
-# include <fcntl.h> // Open function
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
-
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
 # endif
+
+# include <stdlib.h>// Memory allocation
+# include <stdarg.h>// va_lists
+# include <string.h>// String manipulation
+# include <stddef.h>// Types and macros like NULL and size_t
+# include <stdio.h>// Printf
+# include <unistd.h>// System calls, write
+# include <limits.h>// Limits, for testing
+# include <fcntl.h>// Open function
 
 char	*ft_strchr(const char *s, int c);
 void	*ft_memset(void *s, int c, size_t n);
