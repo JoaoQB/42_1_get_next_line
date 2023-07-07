@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/06 14:08:12 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:34:52 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,22 @@ char	*manage_buffer(char *buffer)
 
 	i = 0;
 	j = 0;
-	while (*(buffer + i) && *(buffer + i) != '\n')
+	if (ft_strchr(buffer, '\n'))
+	{
+		while (*(buffer + i) != '\n')
+			i++;
+		line = ft_calloc((ft_strlen(buffer) - i) + 1, 1);
 		i++;
-	printf("index is in: position %d, char '%c', in %s\n", i, buffer[i], buffer);
-	line = ft_calloc((ft_strlen(buffer) - i) + 1, 1);
-	while (*(buffer + i) && *(buffer + i) != '\0')
-		*(line + j++) = *(buffer + i++);
-	printf("buffer is: %s\n", buffer);
-	printf("line is: %s\n", line);
+		while (*(buffer + i) && *(buffer + i) != '\0')
+		{
+			*(line + j) = *(buffer + i);
+			j++;
+			i++;
+		}
+	}
+	else
+		line = ft_calloc(1, 1);
+	free (buffer);
 	return (line);
 }
 
@@ -79,7 +87,6 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	free(buffer);
 	buffer = read_line(fd, buffer);
 	line = create_line(buffer);
 	buffer = manage_buffer(buffer);
@@ -90,15 +97,26 @@ int	main(void)
 {
 	int	fd;
 
-	fd = open("file.txt", O_RDONLY);
+	fd = open("file2.txt", O_RDONLY);
 	char	*buffer;
 	char	*s2;
 	char	*s3;
+	char	*s4;
 
 	buffer = get_next_line(fd);
 	s2 = get_next_line(fd);
 	s3 = get_next_line(fd);
-	printf("I have read: \n%s$\n", buffer);
-	printf("I have read: \n%s$\n", s2);
-	printf("I have read: \n%s$\n", s3);
+	s4 = get_next_line(fd);
+	printf("I have read: \n%s", buffer);
+	printf("I have read: \n%s", s2);
+	printf("I have read: \n%s", s3);
+	printf("I have read: \n%s", s4);
+	buffer = get_next_line(fd);
+	s2 = get_next_line(fd);
+	s3 = get_next_line(fd);
+	s4 = get_next_line(fd);
+	printf("I have read: \n%s$", buffer);
+	printf("I have read: \n%s$", s2);
+	printf("I have read: \n%s$", s3);
+	printf("I have read: \n%s$", s4);
 }
