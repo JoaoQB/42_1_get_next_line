@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:58 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/07 13:23:48 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:11:24 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	tmp = (void *)malloc(nmemb * size);
 	if (!tmp)
+	{
+		free (tmp);
 		return (NULL);
+	}
 	ft_memset(tmp, 0, size * nmemb);
 	return (tmp);
 }
@@ -59,7 +62,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -79,5 +82,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[++j])
 		dest[i++] = s2[j];
 	*(dest + i) = '\0';
+	free (s1);
 	return (dest);
 }

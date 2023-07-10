@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/07 13:28:09 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:45:00 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*manage_buffer(char *buffer)
 	{
 		while (*(buffer + i) != '\n')
 			i++;
-		line = ft_calloc((ft_strlen(buffer) - i) + 1, 1);
+		line = ft_calloc((ft_strlen(buffer) - i), 1);
 		i++;
 		while (*(buffer + i) && *(buffer + i) != '\0')
 			*(line + j++) = *(buffer + i++);
@@ -71,8 +71,6 @@ char	*create_line(char *buffer)
 	while (*(buffer + i) != '\n')
 		i++;
 	line = ft_calloc(i + 1, 1);
-	if (!line)
-		return (NULL);
 	i = 0;
 	while (*(buffer + i) && *(buffer + i) != '\n')
 	{
@@ -107,8 +105,10 @@ int	main(void)
 	char	*buffer;
 
 	buffer = get_next_line(fd);
-	printf("I have read: %s", buffer);/*
-	char	*s2;
+	if (buffer)
+		printf("I have read: %s", buffer);
+	free (buffer);
+	/*char	*s2;
 	char	*s3;
 	char	*s4;
 

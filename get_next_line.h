@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:54 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/07 13:24:57 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:51:09 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strchr(const char *s, int c);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	*manage_buffer(char *buffer);
 char	*read_line(int fd, char *buffer);
 char	*create_line(char *buffer);
