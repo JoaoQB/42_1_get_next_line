@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/10 20:07:11 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 22:15:53 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*manage_buffer(char *buffer)
 			*(line + j++) = *(buffer + i++);
 	}
 	else
-		line = ft_calloc(1, 1);
+		line = ft_calloc(BUFFER_SIZE + 1, 1);
 	free (buffer);
 	return (line);
 }
@@ -97,18 +97,18 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	fd;
 
-	fd = open("file.txt", O_RDONLY);
+	fd = open("file2.txt", O_RDONLY);
 	char	*buffer;
 
 	buffer = get_next_line(fd);
 	if (buffer)
 		printf("I have read: %s", buffer);
 	free (buffer);
-	/*char	*s2;
+	char	*s2;
 	char	*s3;
 	char	*s4;
 
@@ -127,5 +127,10 @@ int	main(void)
 	printf("I have read: %s", s3);
 	printf("I have read: %s", s4);
 	buffer = get_next_line(fd);
-	printf("I have read: %s", buffer);*/
-}
+	printf("I have read: %s", buffer);
+	free (s2);
+	free (s3);
+	free (s4);
+	free (buffer);
+	return (0);
+}*/
