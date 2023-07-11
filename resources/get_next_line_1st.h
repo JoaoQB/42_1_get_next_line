@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:54 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/10 18:51:09 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:12:03 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 10
 # endif
 
 # include <stdlib.h>// Memory allocation
@@ -31,7 +31,7 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char *s1, char *s2);
-char	*manage_buffer(char *buffer);
+void	manage_buffer(char *buffer);
 char	*read_line(int fd, char *buffer);
 char	*create_line(char *buffer);
 char	*get_next_line(int fd);
