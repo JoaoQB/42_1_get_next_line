@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:55:51 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/10 22:15:53 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:38:45 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,19 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer = read_line(fd, buffer);
 	if (!buffer)
 		return (NULL);
 	line = create_line(buffer);
+	if (!line)
+		return (NULL);
 	buffer = manage_buffer(buffer);
 	return (line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int	fd;
 
@@ -133,4 +135,4 @@ char	*get_next_line(int fd)
 	free (s4);
 	free (buffer);
 	return (0);
-}*/
+}
