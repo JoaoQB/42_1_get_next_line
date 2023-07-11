@@ -6,17 +6,14 @@
 #    By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 13:58:25 by jqueijo-          #+#    #+#              #
-#    Updated: 2023/07/05 15:57:17 by jqueijo-         ###   ########.fr        #
+#    Updated: 2023/07/11 17:48:56 by jqueijo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 A function that returns a line from a file, until the end of the file is reached.
 
 
-o temp recebe o read e passa para o buffer
-o buffer ta smp a receber string join do temp
-qdo no buffer existir uma linha
-passas tudo ate ao linebreak para o line
-devolves o line
-depois apagas do buffer tudo o que copiaste para o line
-e recomeças
+Read para o buffer.
+Copy buffer to temp.
+Repeat until end or new line.
+If new line, break.
