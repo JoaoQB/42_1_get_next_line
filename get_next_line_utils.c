@@ -6,11 +6,38 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:31 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/11 20:35:15 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:26:33 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*((char *)s + i) = c;
+		i++;
+	}
+	return (s);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*tmp;
+
+	tmp = (void *)malloc(nmemb * size);
+	if (!tmp)
+	{
+		free (tmp);
+		return (NULL);
+	}
+	ft_memset(tmp, 0, size * nmemb);
+	return (tmp);
+}
 
 size_t	ft_strlen(const char *str)
 {
@@ -33,41 +60,6 @@ char	*ft_strchr(const char *s, int c)
 	if (*s == (char)c)
 		return ((char *)s);
 	return (NULL);
-}
-
-void	manage_buffer(char *buffer)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	if (ft_strchr(buffer, '\n'))
-	{
-		while (*(buffer + i) != '\n')
-			i++;
-		i++;
-		while (*(buffer + i))
-		{
-			*(buffer + j) = *(buffer + i);
-			*(buffer + i) = '\0';
-			i++;
-			j++;
-		}
-		while (*(buffer + j))
-		{
-			*(buffer + j) = '\0';
-			j++;
-		}
-	}
-	else
-	{
-		while (*(buffer + i))
-		{
-			*(buffer + i) = '\0';
-			i++;
-		}
-	}
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -100,56 +92,4 @@ char	*ft_strjoin(char *s1, char *s2)
 	*(dest + i) = '\0';
 	free (s1);
 	return (dest);
-}
-
-/*char	*create_line(char *buffer, char *temp)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	temp = malloc((ft_strlen(temp) + BUFFER_SIZE + 1) * sizeof(char));
-	while (*(temp + j))
-		j++;
-	while (*(buffer + i))
-	{
-		*(temp + j) = *(buffer + i);
-		i++;
-		j++;
-		if (*(buffer + i) == '\n')
-		{
-			*(temp + j) = '\n';
-			j++;
-			break ;
-		}
-	}
-	*(temp + j) = '\0';
-	return (temp);
-}*/
-
-char	*read_line(int fd, char *buffer)
-{
-	char	*temp;
-	int		rchars;
-
-	temp = NULL;
-	if (*buffer)
-	{
-		temp = malloc((ft_strlen(buffer) + 1) * sizeof(char));
-		temp = ft_strjoin(temp, buffer);
-	}
-	rchars = read(fd, buffer, BUFFER_SIZE);
-	if (rchars <= 0)
-		return (NULL);
-	while (rchars > 0)
-	{
-		if (!temp)
-			temp = malloc((BUFFER_SIZE + 1) * sizeof(char));
-		temp = ft_strjoin(temp, buffer);
-		if (ft_strchr(temp, '\n'))
-			break ;
-		rchars = read(fd, buffer, BUFFER_SIZE);
-	}
-	return (temp);
 }

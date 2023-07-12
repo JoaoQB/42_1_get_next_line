@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 16:31:04 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/11 19:17:37 by jqueijo-         ###   ########.fr       */
+/*   Created: 2023/07/12 14:47:26 by jqueijo-          #+#    #+#             */
+/*   Updated: 2023/07/12 14:48:36 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@
 # include <limits.h>// Limits, for testing
 # include <fcntl.h>// Open function
 
-char	*create_line(char *temp);
+void	*ft_memset(void *s, int c, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
-void	manage_buffer(char *buffer);
 char	*ft_strjoin(char *s1, char *s2);
+void	manage_buffer(char *buffer);
+char	*create_line(char *temp);
 char	*read_line(int fd, char *buffer);
 char	*get_next_line(int fd);
 
-# endif
+#endif
