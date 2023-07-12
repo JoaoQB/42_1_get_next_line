@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/12 20:16:12 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/12 21:58:08 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ void	manage_buffer(char *buffer)
 			*(buffer + j++) = '\0';
 	}
 	else
-	{
-		while (i < BUFFER_SIZE)
-			*(buffer + i++) = '\0';
-	}
+		clean_buffer(buffer);
 }
 
 char	*create_line(char *temp)
@@ -87,7 +84,7 @@ char	*read_line(int fd, char *buffer)
 		clean_buffer(buffer);
 	}
 	rchars = read(fd, buffer, BUFFER_SIZE);
-	if (rchars <= 0 && !temp)
+	if (rchars < 0)
 		return (NULL);
 	while (rchars > 0)
 	{
@@ -108,7 +105,7 @@ char	*get_next_line(int fd)
 	char		*temp;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	temp = read_line(fd, buffer);
 	if (!temp)
@@ -116,35 +113,17 @@ char	*get_next_line(int fd)
 	line = create_line(temp);
 	if (!line)
 		return (NULL);
-	// printf("buffer is: %s\n", buffer);
 	manage_buffer(buffer);
-	// printf("managed buffer is: %s\n", buffer);
 	if (temp)
 		free (temp);
 	return (line);
 }
-
-/*int	main(void)
-{
-	int	fd;
-
-	fd = open("file.txt", O_RDONLY);
-	char	*buffer;
-
-	buffer = get_next_line(fd);
-	printf("Read: %s", buffer);
-	buffer = get_next_line(fd);
-	printf("Read: %s", buffer);
-	buffer = get_next_line(fd);
-	printf("Read: %s", buffer);
-	free(buffer);
-}*/
-
+/*
 int	main(void)
 {
 	int	fd;
 
-	fd = open("file5.txt", O_RDONLY);
+	fd = open("file.txt", O_RDONLY);
 	char	*buffer;
 
 	while (1)
@@ -156,4 +135,4 @@ int	main(void)
 		free(buffer);
 	}
 
-}
+}*/
