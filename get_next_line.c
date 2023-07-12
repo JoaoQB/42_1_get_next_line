@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/12 16:07:00 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:30:36 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,17 @@ char	*create_line(char *temp)
 {
 	char	*line;
 	int		i;
+	int		nl;
 
 	i = 0;
+	nl = 1;
+	if (!temp)
+		return (NULL);
+	if (ft_strchr(temp, '\n'))
+		nl = 2;
 	while (*(temp + i) && *(temp + i) != '\n')
 		i++;
-	line = ft_calloc(i + 1, 1);
+	line = ft_calloc(i + nl, 1);
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -62,9 +68,8 @@ char	*create_line(char *temp)
 		*(line + i) = *(temp + i);
 		i++;
 	}
-	if (*(temp + i) && *(temp + i) == '\n')
+	if (nl == 2)
 		*(line + i) = '\n';
-	free (temp);
 	return (line);
 }
 
@@ -75,7 +80,11 @@ char	*read_line(int fd, char *buffer)
 
 	temp = NULL;
 	if (*buffer)
+	{
 		temp = create_line(buffer);
+		if (ft_strchr(temp, '\n'))
+			return (temp);
+	}
 	rchars = read(fd, buffer, BUFFER_SIZE);
 	if (rchars <= 0)
 		return (NULL);
@@ -105,9 +114,11 @@ char	*get_next_line(int fd)
 	line = create_line(temp);
 	if (!line)
 		return (NULL);
-	printf("buffer is: %s\n", buffer);
+	// printf("buffer is: %s\n", buffer);
 	manage_buffer(buffer);
-	printf("managed buffer is: %s\n", buffer);
+	// printf("managed buffer is: %s\n", buffer);
+	if (temp)
+		free (temp);
 	return (line);
 }
 
@@ -125,7 +136,7 @@ char	*get_next_line(int fd)
 	buffer = get_next_line(fd);
 	printf("Read: %s", buffer);
 	free(buffer);
-}*/
+}
 
 int	main(void)
 {
@@ -143,4 +154,4 @@ int	main(void)
 		free(buffer);
 	}
 
-}
+}*/
