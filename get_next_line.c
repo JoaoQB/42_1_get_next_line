@@ -6,25 +6,11 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/12 15:43:20 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:07:00 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Manage buffer inside create line function. */
-
 #include "get_next_line.h"
-
-// void	manage_buffer(char *buffer)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	j = 0;
-// 	while (*(buffer + i) )
-// 	{
-// 	}
-// }
 
 void	manage_buffer(char *buffer)
 {
@@ -119,7 +105,9 @@ char	*get_next_line(int fd)
 	line = create_line(temp);
 	if (!line)
 		return (NULL);
+	printf("buffer is: %s\n", buffer);
 	manage_buffer(buffer);
+	printf("managed buffer is: %s\n", buffer);
 	return (line);
 }
 
