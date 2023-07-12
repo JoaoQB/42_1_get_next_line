@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:47:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/12 14:48:36 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/12 18:59:04 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <limits.h>// Limits, for testing
 # include <fcntl.h>// Open function
 
+void	clean_buffer(char *buffer);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlen(const char *str);

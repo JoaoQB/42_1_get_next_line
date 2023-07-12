@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:31 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/12 15:26:33 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:05:16 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		dest[i] = s1[i];
 	j = -1;
 	while (s2[++j])
-	{
-		if (s2[j] == '\n')
-		{
-			dest[i] = '\n';
-			i++;
-			break ;
-		}
 		dest[i++] = s2[j];
-	}
 	*(dest + i) = '\0';
 	free (s1);
 	return (dest);

@@ -6,11 +6,20 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/12 17:30:36 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/12 20:16:12 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	clean_buffer(char *buffer)
+{
+	int	i;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
+		*(buffer + i++) = '\0';
+}
 
 void	manage_buffer(char *buffer)
 {
@@ -25,24 +34,15 @@ void	manage_buffer(char *buffer)
 			i++;
 		i++;
 		while (*(buffer + i))
-		{
-			*(buffer + j) = *(buffer + i);
-			*(buffer + i) = '\0';
-			i++;
-			j++;
-		}
+			*(buffer + j++) = *(buffer + i++);
 		while (*(buffer + j))
-		{
-			*(buffer + j) = '\0';
-			j++;
-		}
+			*(buffer + j++) = '\0';
 	}
 	else
-		while (*(buffer + i))
-		{
-			*(buffer + i) = '\0';
-			i++;
-		}
+	{
+		while (i < BUFFER_SIZE)
+			*(buffer + i++) = '\0';
+	}
 }
 
 char	*create_line(char *temp)
@@ -84,9 +84,10 @@ char	*read_line(int fd, char *buffer)
 		temp = create_line(buffer);
 		if (ft_strchr(temp, '\n'))
 			return (temp);
+		clean_buffer(buffer);
 	}
 	rchars = read(fd, buffer, BUFFER_SIZE);
-	if (rchars <= 0)
+	if (rchars <= 0 && !temp)
 		return (NULL);
 	while (rchars > 0)
 	{
@@ -95,6 +96,7 @@ char	*read_line(int fd, char *buffer)
 		temp = ft_strjoin(temp, buffer);
 		if (ft_strchr(temp, '\n'))
 			break ;
+		clean_buffer(buffer);
 		rchars = read(fd, buffer, BUFFER_SIZE);
 	}
 	return (temp);
@@ -126,7 +128,7 @@ char	*get_next_line(int fd)
 {
 	int	fd;
 
-	fd = open("file2.txt", O_RDONLY);
+	fd = open("file.txt", O_RDONLY);
 	char	*buffer;
 
 	buffer = get_next_line(fd);
@@ -136,13 +138,13 @@ char	*get_next_line(int fd)
 	buffer = get_next_line(fd);
 	printf("Read: %s", buffer);
 	free(buffer);
-}
+}*/
 
 int	main(void)
 {
 	int	fd;
 
-	fd = open("file3.txt", O_RDONLY);
+	fd = open("file5.txt", O_RDONLY);
 	char	*buffer;
 
 	while (1)
@@ -154,4 +156,4 @@ int	main(void)
 		free(buffer);
 	}
 
-}*/
+}
