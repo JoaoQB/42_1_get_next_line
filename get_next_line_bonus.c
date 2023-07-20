@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/20 13:53:00 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:11:26 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	manage_buffer(char *buffer)
 	else
 	{
 		while (i < BUFFER_SIZE)
-		*(buffer + i++) = '\0';
+			*(buffer + i++) = '\0';
 	}
 }
 
