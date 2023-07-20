@@ -6,20 +6,11 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/12 22:11:30 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/20 12:33:12 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	clean_buffer(char *buffer)
-{
-	int	i;
-
-	i = 0;
-	while (i < BUFFER_SIZE)
-		*(buffer + i++) = '\0';
-}
 
 void	manage_buffer(char *buffer)
 {
@@ -39,7 +30,10 @@ void	manage_buffer(char *buffer)
 			*(buffer + j++) = '\0';
 	}
 	else
-		clean_buffer(buffer);
+	{
+		while (i < BUFFER_SIZE)
+		*(buffer + i++) = '\0';
+	}
 }
 
 char	*create_line(char *temp)
@@ -81,11 +75,9 @@ char	*read_line(int fd, char *buffer)
 		temp = create_line(buffer);
 		if (ft_strchr(temp, '\n'))
 			return (temp);
-		clean_buffer(buffer);
+		manage_buffer(buffer);
 	}
 	rchars = read(fd, buffer, BUFFER_SIZE);
-	if (rchars < 0)
-		return (NULL);
 	while (rchars > 0)
 	{
 		if (!temp)
@@ -93,8 +85,13 @@ char	*read_line(int fd, char *buffer)
 		temp = ft_strjoin(temp, buffer);
 		if (ft_strchr(temp, '\n'))
 			break ;
-		clean_buffer(buffer);
+		manage_buffer(buffer);
 		rchars = read(fd, buffer, BUFFER_SIZE);
+	}
+	if (rchars < 0)
+	{
+		free (temp);
+		return (NULL);
 	}
 	return (temp);
 }

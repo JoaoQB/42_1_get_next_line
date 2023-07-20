@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:47:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/12 21:54:02 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/20 12:24:29 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <limits.h>// Limits, for testing
 # include <fcntl.h>// Open function
 
-void	clean_buffer(char *buffer);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlen(const char *str);
@@ -34,6 +33,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 void	manage_buffer(char *buffer);
 char	*create_line(char *temp);
+char	*rchars_check(int rchars, char *temp);
 char	*read_line(int fd, char *buffer);
 char	*get_next_line(int fd);
 
