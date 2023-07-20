@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line _bonus.h                             :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:47:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/20 12:39:10 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/20 13:53:14 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 void	manage_buffer(char *buffer);
 char	*create_line(char *temp);
-char	*rchars_check(int rchars, char *temp);
+char	*read_line_loop(int fd, char *buffer, char *temp, int rchars);
 char	*read_line(int fd, char *buffer);
 char	*get_next_line(int fd);
 

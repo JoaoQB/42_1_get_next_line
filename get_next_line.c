@@ -6,7 +6,7 @@
 /*   By: jqueijo- <jqueijo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:23:26 by jqueijo-          #+#    #+#             */
-/*   Updated: 2023/07/20 12:33:12 by jqueijo-         ###   ########.fr       */
+/*   Updated: 2023/07/20 13:52:38 by jqueijo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,21 @@ char	*create_line(char *temp)
 	return (line);
 }
 
+char	*read_line_loop(int fd, char *buffer, char *temp, int rchars)
+{
+	while (rchars > 0)
+	{
+		if (!temp)
+			temp = ft_calloc(BUFFER_SIZE + 1, 1);
+		temp = ft_strjoin(temp, buffer);
+		if (ft_strchr(temp, '\n'))
+			break ;
+		manage_buffer(buffer);
+		rchars = read(fd, buffer, BUFFER_SIZE);
+	}
+	return (temp);
+}
+
 char	*read_line(int fd, char *buffer)
 {
 	char	*temp;
@@ -78,22 +93,12 @@ char	*read_line(int fd, char *buffer)
 		manage_buffer(buffer);
 	}
 	rchars = read(fd, buffer, BUFFER_SIZE);
-	while (rchars > 0)
-	{
-		if (!temp)
-			temp = ft_calloc(BUFFER_SIZE + 1, 1);
-		temp = ft_strjoin(temp, buffer);
-		if (ft_strchr(temp, '\n'))
-			break ;
-		manage_buffer(buffer);
-		rchars = read(fd, buffer, BUFFER_SIZE);
-	}
 	if (rchars < 0)
 	{
-		free (temp);
+		free(temp);
 		return (NULL);
 	}
-	return (temp);
+	return (read_line_loop(fd, buffer, temp, rchars));
 }
 
 char	*get_next_line(int fd)
@@ -131,5 +136,4 @@ int	main(void)
 		printf("Read: %s\n", buffer);
 		free(buffer);
 	}
-
 }*/
